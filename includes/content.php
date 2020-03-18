@@ -23,14 +23,14 @@ try {
 
     foreach($data as $row){
         echo '
-        <span class = "float">
+        <div class = "float">
           <img class = "index" src="avatars/images/'.$row["avatar"].'" alt = '.$row["name"].'><p>'.$row["name"].'</p>
           <i class="fas fa-heart"></i> '.$row["health"]. '<br>
           <i class="fas fa-fist-raised"></i> '.$row["attack"].'<br>
           <i class="fas fa-shield-alt"></i> '.$row["defense"].'<br><br>
           <a href="character.php?id='.$row["id"].'">
           <i class="fas fa-search"></i> bekijk</a>
-          <hr></span>';
+        <hr></div>';
     }
     echo '</div>';
 

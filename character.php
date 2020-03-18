@@ -31,22 +31,25 @@ try {
     ));
 
     foreach($data as $row){
-        echo '<div class="grid-item item1">
-        <h1>'.$row["name"].'</h1><a class= "terug" href="index.php">
-        <i class="fas fa-long-arrow-alt-left"></i> Terug</a>
+        echo '
+        <div class="grid-item item1">
+        <a class = "terug" href="index.php">
+            <i class="fas fa-long-arrow-alt-left"></i> Terug</a>
+            <div class = "title">'.$row["name"].'</div>
         </div>
-        <div class="grid-item item3 "><img class = "character" src="avatars/images/'.$row["avatar"].'"alt="'.$row["name"].'"><br>
-        <div class = "details" style="background-color:'.$row["color"].'">
-        <p class = "margin"><i class="fas fa-heart"></i> '.$row["health"]. '<br>
-        <i class="fas fa-fist-raised"></i> '.$row["attack"].'<br>
-        <i class="fas fa-shield-alt"></i> '.$row["defense"].'<br><br>
-        <b>Weapon:</b> '.$row["weapon"].
-        '<br><b>Armor:</b> '.$row["armor"].'</p>
+        <div class="grid-item item3 ">
+            <img class = "character" src="avatars/images/'.$row["avatar"].'"alt="'.$row["name"].'"><br>
+            <div class = "details" style="background-color:'.$row["color"].'">
+                <p class = "margin"><i class="fas fa-heart"></i> '.$row["health"]. '<br>
+                <i class="fas fa-fist-raised"></i> '.$row["attack"].'<br>
+                <i class="fas fa-shield-alt"></i> '.$row["defense"].'<br><br>
+                <b>Weapon:</b> '.$row["weapon"].
+                '<br><b>Armor:</b> '.$row["armor"].'</p>
+            </div>
         </div>
-        </div>
-        <div class="grid-item item4 ">
-        <p class = "text">'.$row["bio"]. '<br></p>
-        </div>';
+            <div class="grid-item item4 ">
+                <p><pre>'.$row["bio"]. '</pre><br></p>
+            </div>';
     }
 }
 catch(PDOException $e)
