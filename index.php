@@ -14,7 +14,7 @@
   include('includes/content.php');
   ?>
   <div class="grid-item item6">
-<a href = 'includes/addCharacter.php'><button type = button>Add new character</button></a>
+<a href = 'includes/addCharacter.php'><i class="fas fa-plus"></i> Add new character</a>
   </div>
   <?php
     include('includes/footer.php');

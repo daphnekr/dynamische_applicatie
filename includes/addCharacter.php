@@ -20,7 +20,7 @@
 include('../connection.php');
 
     $name = $_POST["name"];
-    $avatar = $_POST["avatar"];
+    $avatar = 'nopicture.png';
     $health = $_POST["health"];
     $bio = $_POST["bio"];
     $color = $_POST["color"];
@@ -62,16 +62,23 @@ include('../connection.php');
             $defenseErr = " * Verplicht";
             $valid = true;
         }
+        
+            if(empty($avatar)){
+                $avatar = "bowser.jpg";
+                $sqlavatar = "INSERT INTO characters (avatar) VALUES (:avatar)";
+                $stmt1 = $connect->prepare($sqlavatar);
+                $stmt1->execute(['avatar'=> $avatar]);
+            }
 
         if ($valid){
-            echo "";
+            echo "<div class = 'added'>Vul de verplichte velden in </div>";
         }
         else{
             $sql = "INSERT INTO characters (name, avatar, health, bio, color, attack, defense, weapon, armor) VALUES (:name, :avatar, :health, :bio, :color, :attack, :defense, :weapon, :armor)";
 
             $stmt = $connect->prepare($sql);
             $stmt->execute(['name'=> $name, 'avatar'=> $avatar, 'health'=> $health, 'bio'=> $bio,'color' => $color, 'attack'=> $attack, 'defense'=> $defense, 'weapon'=> $weapon, 'armor'=> $armor]);
-            
+        
             echo '<div class = "added"> Character was succesfully added </div>';
         }
 
@@ -92,11 +99,11 @@ include('../connection.php');
     Naam character: <br>
 <input type="text" name="name"><span class="error"><?php echo $nameErr;?></span> <br><br>
 Avatar: <br>
-<input type="text" name="avatar"><span class="error"><?php echo $avatarErr;?></span> <br><br>
+<input type="text" name="avatar" disabled><span class="error" ><?php echo $avatarErr;?></span> <br><br>
     Health: <br>
 <input type="number" name="health"><span class="error"><?php echo $healthErr;?></span><br><br>
     Bio: <br>
-<input type="text" name="bio"><span class="error"><?php echo $Err;?></span><br><br>
+<textarea type="text" name="bio" rows="5" cols="40"></textarea><span class="error"><?php echo $Err;?></span><br><br>
     Color: <br>
     <input type="color" name="color" value="#ff0000"><br><br>
     Attack: <br>
@@ -108,7 +115,7 @@ Avatar: <br>
     Armor: <br>
 <input type="text" name="armor"><span class="error"><?php echo $Err;?></span><br><br>
     
-    <input type="submit">
+<i class="fas fa-share-square"></i><input class= "submit" type="submit">
 
 
 
