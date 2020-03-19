@@ -42,12 +42,6 @@ include('../connection.php');
         if (empty($name)) {
             $nameErr = " * Verplicht";
             $valid = true;
-        } else {
-            $name = test_input($name);
-            if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-            $namerErr = " Alleen letters en spaties toegestaan";
-            $valid = true;
-            }
         }
 
         if (empty($_POST["health"])) {
@@ -79,7 +73,7 @@ include('../connection.php');
             $stmt = $connect->prepare($sql);
             $stmt->execute(['name'=> $name, 'avatar'=> $avatar, 'health'=> $health, 'bio'=> $bio,'color' => $color, 'attack'=> $attack, 'defense'=> $defense, 'weapon'=> $weapon, 'armor'=> $armor]);
         
-            echo '<div class = "added"> Character was succesfully added </div>';
+            echo '<div class = "added"> Character is succesvol toegevoegd </div>';
         }
 
 
@@ -95,31 +89,32 @@ include('../connection.php');
 
 ?>
 
-<form class = "form" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+    <form class = "form" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+
     Naam character: <br>
-<input type="text" name="name"><span class="error"><?php echo $nameErr;?></span> <br><br>
-Avatar: <br>
-<input type="text" name="avatar" disabled><span class="error" ><?php echo $avatarErr;?></span> <br><br>
+        <input type="text" name="name"><span class="error"><?php echo $nameErr;?></span> <br><br>
+    Avatar: <br>
+        <input type="text" name="avatar" disabled><br><br>
     Health: <br>
-<input type="number" name="health"><span class="error"><?php echo $healthErr;?></span><br><br>
+        <input type="number" name="health"><span class="error"><?php echo $healthErr;?></span><br><br>
     Bio: <br>
-<textarea type="text" name="bio" rows="5" cols="40"></textarea><span class="error"><?php echo $Err;?></span><br><br>
+        <textarea type="text" name="bio" rows="5" cols="40"></textarea><br><br>
     Color: <br>
-    <input type="color" name="color" value="#ff0000"><br><br>
+        <input type="color" name="color" value="#ff0000"><br><r>
     Attack: <br>
-<input type="number" name="attack"><span class="error"><?php echo $attackErr;?></span><br><br>
+        <input type="number" name="attack"><span class="error"><?php echo $attackErr;?></span><br><br>
     Defense: <br>
-<input type="number" name="defense"><span class="error"><?php echo $defenseErr;?></span><br><br>
+        <input type="number" name="defense"><span class="error"><?php echo $defenseErr;?></span><br><br>
     Weapon: <br>
-<input type="text" name="weapon"><span class="error"><?php echo $Err;?></span><br><br>
+        <input type="text" name="weapon"><br><br>
     Armor: <br>
-<input type="text" name="armor"><span class="error"><?php echo $Err;?></span><br><br>
-    
-<i class="fas fa-share-square"></i><input class= "submit" type="submit">
+        <input type="text" name="armor"><br><br>
+        
+    <i class="fas fa-share-square"></i><input class= "submit" type="submit">
 
 
 
-</form>
+    </form>
 
 </div>
 <?include('footer.php');?>
