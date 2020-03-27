@@ -1,3 +1,5 @@
+<!-- ik heb een extra functie erin gemaakt om zelf nieuwe karakters toe te voegen aan de database en die worden getoond op het scherm en de details -->
+
 <!doctype html>
 
 <html lang="en">
@@ -17,7 +19,7 @@
   </div>
 <div class="grid-item item2">
 <?php
-include('../connection.php');
+include('connection.php');
 
     $name = $_POST["name"];
     $avatar = 'nopicture.png';
